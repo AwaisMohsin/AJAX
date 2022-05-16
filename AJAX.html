@@ -1,0 +1,109 @@
+<!-- AJAX -->
+<!-- Asynchronous JavaScript And XML -->
+
+<!-- AJAX is not a programming language but it uses to things -->
+
+<!-- 
+    1-  XMLHttpRequest(): is use to update web content without realoding the page.
+    2-  javaScript or Dom to show/represent out web content.
+ -->
+
+<!-- 
+1-  Update a web page without reloading the page
+2-  Request data from a server - after the page has loaded
+3-  Receive data from a server - after the page has loaded
+4-  Send data to a server - in the background
+ -->
+
+<!--XMLHttpRequest-->
+
+<!-- 
+    XMLHttpRequest (XHR) objects are used to interact with servers. 
+    You can retrieve data from a URL without having to do a full page refresh.
+     This enables a Web page to update just part of a page without disrupting what the user is doing.
+ -->
+
+<!-- ResponseText -->
+
+
+<!-- 
+    The responseText method is used for all formats that are not based on XML.
+    It returns an exact representation of the response as a string. 
+    Plain text, (X)HTML, and JSON are all formats that use responseText.
+ -->
+
+
+<!-- onreadystatechange -->
+
+ <!-- An event handler that is called whenever the readyState attribute changes. -->
+
+ <!-- readystate -->
+
+ <!-- The readyState property holds the status of the XMLHttpRequest. -->
+
+ <!-- 
+         1- The request has been set up.
+         2- The request has been sent.
+         3-The request is in process.
+         4-The request is completed.
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <div id="demo">
+        <h2>This is Header</h2>
+        <p id="para">This is random Pragraph</p>
+        <button type="button" onclick="loadDoc()">Please Click MeChange Content</button>
+    </div>
+
+    <!-- <script>
+        function loadDoc() {
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = function () {
+                document.getElementById("demo").innerHTML =this.responseText;
+            };
+            xhttp.open("GET", "ajax_info.txt");
+            xhttp.send();
+        
+        }
+    </script> -->
+
+
+    <!-- <script>
+        function loadDoc() {
+            const xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("demo").innerHTML =this.responseText;
+                } else if (this.readyState == 4 && this.status == 404){
+                    alert("Sorry! File not Found")
+                }
+            };
+            xhttp.open("GET", "ajax_info.txt");
+            xhttp.send();
+        }
+    </script> -->
+
+
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                $("p").load("ajax_info.txt");
+            });
+        });
+    </script>
+
+</body>
+</html>
+
